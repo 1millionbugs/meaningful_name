@@ -1,6 +1,5 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
-import time
 
 class LoginPage(BasePage):
 
@@ -15,15 +14,24 @@ class LoginPage(BasePage):
         assert self.is_element_present(*LoginPageLocators.REGISTER_FORM), "Register form is not presented"
 
     def register_new_user(self, email, password):
+        assert self.is_element_present(*LoginPageLocators.EMAIL_REGISTRATION_INPUT), (
+            "Email registration input  is not presented")
         email_registration_input = self.browser.find_element(*LoginPageLocators.EMAIL_REGISTRATION_INPUT)
         email_registration_input.send_keys(email)
-        password_registration_input = self.browser.find_element(*LoginPageLocators.PASSWORD_REGISTRATION_PASSWORD)
+        assert self.is_element_present(*LoginPageLocators.PASSWORD_REGISTRATION_INPUT), (
+            "Password registration input  is not presented")
+        password_registration_input = self.browser.find_element(*LoginPageLocators.PASSWORD_REGISTRATION_INPUT)
         password_registration_input.send_keys(password)
-        password_confirmation_registration_input = self.browser.find_element(*LoginPageLocators.PASSWORD_REGISTRATION_PASSWORD_CONFIRMATION)
+        assert self.is_element_present(*LoginPageLocators.PASSWORD_REGISTRATION_INPUT), (
+            "Password registration confirmation input  is not presented")
+        password_confirmation_registration_input = self.browser.find_element(*LoginPageLocators.PASSWORD_REGISTRATION_CONFIRMATION_INPUT)
         password_confirmation_registration_input.send_keys(password)
+        assert self.is_element_present(*LoginPageLocators.REGISTER_BUTTON), (
+            "Register button  is not presented")
         register_button = self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON)
         register_button.click()
-        #time.sleep(5)
+        assert self.is_element_present_waiting(*LoginPageLocators.REGISTER_CONFIRMATION), (
+            "Confirmation  is not presented")
         register_confirmation = self.browser.find_element(*LoginPageLocators.REGISTER_CONFIRMATION).text
         assert register_confirmation == "Thanks for registering!", "Register confirmation is not found"
 
