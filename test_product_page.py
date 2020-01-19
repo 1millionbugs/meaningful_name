@@ -5,7 +5,6 @@ from .pages.login_page import LoginPage
 import pytest
 import faker
 
-
 link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
 
 @pytest.mark.parametrize('link', [0, 1, 2, 3, 4, 5, 6,
