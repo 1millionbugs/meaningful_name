@@ -1,7 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
 
-
 class ProductPage(BasePage):
 
     def add_product_to_basket(self):
@@ -33,6 +32,8 @@ class ProductPage(BasePage):
     def message_disappeared_after_adding_product_to_basket(self):
         assert self.is_disappeared(*ProductPageLocators.PRODUCT_ADDED_MESSAGE), \
             "Success message is presented, but should not be"
+
+
 
 
 

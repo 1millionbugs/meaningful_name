@@ -7,3 +7,4 @@ class BasketPage(BasePage):
             "Product is presented, but should not be"
         empty_basket = self.browser.find_element(*BasePageLocators.EMPTY_BASKET).text
         assert "Your basket is empty" in empty_basket, "Your basket is not empty"
+

@@ -36,3 +36,5 @@ class LoginPage(BasePage):
         assert register_confirmation == "Thanks for registering!", "Register confirmation is not found"
 
 
+
+
