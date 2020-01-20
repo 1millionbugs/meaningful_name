@@ -3,17 +3,17 @@ from .locators import LoginPageLocators
 
 class LoginPage(BasePage):
 
-    def should_be_login_url(self):
+    def should_be_login_url(self): # Проверяем наличие слова login в ссылке
         login_url = self.browser.current_url
         assert "login" in login_url, "Login is not presented in url"
 
-    def should_be_login_form(self):
+    def should_be_login_form(self): # Проверяем наличие формы логина
         assert self.is_element_present(*LoginPageLocators.LOGIN_FORM), "Login form is not presented"
 
-    def should_be_register_form(self):
+    def should_be_register_form(self): # Проверяем наличие формы регистрации
         assert self.is_element_present(*LoginPageLocators.REGISTER_FORM), "Register form is not presented"
 
-    def register_new_user(self, email, password):
+    def register_new_user(self, email, password): # Регистрируем нового юзера
         assert self.is_element_present(*LoginPageLocators.EMAIL_REGISTRATION_INPUT), (
             "Email registration input  is not presented")
         email_registration_input = self.browser.find_element(*LoginPageLocators.EMAIL_REGISTRATION_INPUT)
